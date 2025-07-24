@@ -3,104 +3,199 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alexander De Costa – Machine Learning Engineer</title>
+  <title>Alexander De Costa – ML Engineer</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans&display=swap');
+
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: #121212;
+      color: #E0E0E0;
       line-height: 1.6;
-      color: #222;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
     }
-    h1, h2 {
-      color: #004080;
-      margin-bottom: 0.2em;
+    main {
+      max-width: 800px;
+      width: 100%;
+      background: #1E1E1E;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      padding: 40px 50px;
+      position: relative;
+      overflow: hidden;
     }
-    h3 {
-      margin-top: 0.8em;
-      color: #003366;
+
+    /* Subtle geometric background pattern */
+    main::before {
+      content: "";
+      position: absolute;
+      top: -50px; left: -50px;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 10% 20%, #3B82F6 2px, transparent 3px),
+        radial-gradient(circle at 30% 50%, #2563EB 2px, transparent 3px),
+        radial-gradient(circle at 70% 40%, #1D4ED8 2px, transparent 3px),
+        radial-gradient(circle at 80% 75%, #3B82F6 2px, transparent 3px);
+      background-size: 150px 150px;
+      background-repeat: repeat;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
     }
-    a {
-      color: #0066cc;
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 0.2rem;
+      color: #60A5FA;
+      letter-spacing: 1.2px;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #9CA3AF;
+      margin-top: 0;
+    }
+    .contact-links {
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+    }
+    .contact-links a {
+      color: #60A5FA;
       text-decoration: none;
+      margin: 0 12px;
+      transition: color 0.25s ease;
     }
-    a:hover {
+    .contact-links a:hover {
+      color: #93C5FD;
       text-decoration: underline;
     }
-    .contact-info a {
-      margin-right: 15px;
+
+    /* Sections */
+    section {
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    section h2 {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 700;
+      color: #3B82F6;
+      font-size: 1.8rem;
+      border-bottom: 3px solid #2563EB;
+      padding-bottom: 6px;
+      margin-bottom: 1rem;
+    }
+    section p {
+      font-size: 1rem;
+      color: #D1D5DB;
+      margin-top: 0;
+      max-width: 700px;
     }
     ul {
-      margin-top: 0;
-      padding-left: 20px;
+      list-style-type: disc;
+      margin-left: 1.3rem;
+      color: #D1D5DB;
     }
-    .tagline {
-      font-style: normal;
-      font-weight: bold;
-      color: #333;
-      margin-top: 0.2em;
+    ul li {
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+      max-width: 700px;
     }
-    em {
-      font-size: 0.9em;
-      color: #555;
+
+    /* Confidential note style */
+    .confidential-note {
+      font-style: italic;
+      color: #9CA3AF;
+      margin-top: 0.6rem;
     }
-    header p.contact-info {
-      margin-bottom: 1.5em;
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: #6B7280;
+      font-size: 0.85rem;
+      margin-top: 3rem;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      main {
+        padding: 30px 20px;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Alexander De Costa</h1>
-    <p class="tagline">Machine Learning Engineer — Building reliable, scalable AI solutions that solve complex business problems.</p>
-    <p class="contact-info">
-      <a href="tel:4162004181">416 200 4181</a> | 
-      <a href="mailto:alexander.decosta@outlook.com">alexander.decosta@outlook.com</a> | 
-      <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Download My Resume</a>
-    </p>
-    <p><em>Contact me for consulting, collaboration, or tailored AI solutions that drive business impact.</em></p>
-  </header>
+  <main>
+    <header>
+      <h1>Alexander De Costa</h1>
+      <p>ML Engineer</p>
+      <p class="contact-links">
+        <a href="tel:4162004181">416 200 4181</a> |
+        <a href="mailto:alexander.decosta@outlook.com">alexander.decosta@outlook.com</a> |
+        <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
+      </p>
+    </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I build modular, production-ready machine learning systems that deliver consistent, explainable results even with complex or changing data. By combining deep mathematical insight with practical engineering, I help businesses transform data into confident decisions—minimizing guesswork through principled, data-driven approaches.
-    </p>
-  </section>
+    <section>
+      <h2>About Me</h2>
+      <p>
+        Recent graduate in Mathematics and Probability from the University of Toronto. Experienced in building modular machine learning systems that combine rigorous mathematical foundations with practical engineering to solve complex, real-world problems.
+      </p>
+    </section>
 
-  <section>
-    <h2>Work at RiskScope</h2>
-    <h3>Co-founder & ML Engineer (2025–Present)</h3>
-    <p>
-      At RiskScope, I create customized ML solutions for challenging risk and fraud detection problems involving large, sparse, and imbalanced datasets. I develop automated and expert-guided pipelines that enhance detection accuracy, maintain robustness over time, and deliver actionable business insights.
-    </p>
-    <ul>
-      <li>Designed intelligent feature summarization and transformation tools based on rigorous statistical diagnostics to improve model reliability.</li>
-      <li>Built and optimized end-to-end ML pipelines combining automation with expert tuning to meet diverse client needs.</li>
-      <li>Implemented validation frameworks ensuring model stability for rare-event detection under evolving data conditions.</li>
-    </ul>
-  </section>
+    <section>
+      <h2>Research Interests</h2>
+      <p>
+        Applications of probability theory to machine learning, quantitative finance, and mathematical physics.
+      </p>
+    </section>
 
-  <section>
-    <h2>Technical Focus</h2>
-    <ul>
-      <li>Advanced feature engineering and model diagnostics that enhance performance under uncertainty and changing conditions.</li>
-      <li>Automated ML pipelines leveraging Bayesian optimization to rapidly identify optimal models and configurations.</li>
-      <li>Uncertainty-aware modeling including calibration, drift detection, and risk estimation for confident decision-making.</li>
-      <li>Expertise in modern deep learning architectures such as Transformers, Graph Neural Networks, and diffusion models.</li>
-      <li>Strong software engineering skills using Python and modern ML frameworks, with experience in cloud deployment and containerization.</li>
-    </ul>
-  </section>
+    <section>
+      <h2>Current Work</h2>
+      <p>
+        Leading development of a modular AutoML framework for sparse, imbalanced fraud detection datasets. Conducting independent research to improve theoretical guarantees for adaptive algorithms such as SGD variants and reinforcement learning.
+      </p>
+      <p class="confidential-note">
+        Projects are confidential and not publicly available at this time, but I welcome inquiries and collaboration opportunities.
+      </p>
+    </section>
 
-  <section>
-    <h2>Mathematical Background</h2>
-    <ul>
-      <li>Advanced knowledge of measure theory, functional analysis, and stochastic processes.</li>
-      <li>Skilled at interpreting and applying complex mathematical concepts.</li>
-      <li>Applying mathematical rigor to design ML systems that go beyond heuristics and deliver reliable results.</li>
-    </ul>
-  </section>
+    <section>
+      <h2>Professional Experience</h2>
+      <ul>
+        <li>Co-founder and Lead ML Consultant at RiskScope, delivering interpretable and robust ML pipelines.</li>
+        <li>Former actuarial student at Manulife supporting risk modeling and data analytics.</li>
+      </ul>
+    </section>
 
+    <footer>
+      &copy; 2025 Alexander De Costa
+    </footer>
+  </main>
 </body>
 </html>
