@@ -7,215 +7,223 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans&display=swap');
 
-    /* Reset & base */
-    * {
-      box-sizing: border-box;
-    }
     body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
+      margin: 0; padding: 0; height: 100%;
       font-family: 'Open Sans', sans-serif;
-      background: #121212;
-      color: #E0E0E0;
-    }
-    #bgCanvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      display: block;
+      background: linear-gradient(135deg, #d1d9e6, #a3b1c6);
+      color: #20232a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
     }
 
-    main {
+    #container {
       position: relative;
+      width: 700px;
+      max-width: 90vw;
+      background: rgba(255 255 255 / 0.85);
+      border-radius: 14px;
+      padding: 40px 50px 150px; /* extra bottom padding for canvas */
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
+      text-align: center;
+      overflow: visible;
       z-index: 1;
-      max-width: 800px;
-      width: 90%;
-      background: rgba(30, 30, 30, 0.85);
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-      margin: 40px auto;
-      padding: 40px 50px;
-      backdrop-filter: blur(6px);
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    header h1 {
+    h1 {
       font-family: 'Roboto Slab', serif;
       font-weight: 700;
       font-size: 2.8rem;
-      margin-bottom: 0.2rem;
-      color: #60A5FA;
-      letter-spacing: 1.2px;
+      margin: 0 0 0.3em 0;
+      color: #2c3e50;
+      letter-spacing: 1.1px;
     }
-    header p {
+
+    p {
       font-size: 1.1rem;
-      color: #9CA3AF;
-      margin-top: 0;
+      margin: 0 0 1em 0;
+      color: #34495e;
+      line-height: 1.5;
     }
+
     .contacts {
-      margin-top: 0.8rem;
+      font-family: monospace;
       font-size: 0.95rem;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      color: #60A5FA;
+      margin-top: 0.8rem;
+      color: #2980b9;
     }
     .contacts a {
-      color: #60A5FA;
+      color: #2980b9;
       text-decoration: none;
+      margin: 0 15px;
       transition: color 0.25s ease;
-      font-family: monospace;
     }
     .contacts a:hover {
-      color: #93C5FD;
+      color: #3498db;
       text-decoration: underline;
     }
 
-    section {
-      margin-bottom: 2.5rem;
-    }
-    section h2 {
-      font-family: 'Roboto Slab', serif;
-      font-weight: 700;
-      color: #3B82F6;
-      font-size: 1.8rem;
-      border-bottom: 3px solid #2563EB;
-      padding-bottom: 6px;
-      margin-bottom: 1rem;
-    }
-    section p {
-      font-size: 1rem;
-      color: #D1D5DB;
-      margin-top: 0;
-      max-width: 700px;
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: #7f8c8d;
+      user-select: none;
     }
 
-    footer {
-      text-align: center;
-      color: #6B7280;
-      font-size: 0.85rem;
-      margin-top: 3rem;
+    /* Canvas styling */
+    #tesseractCanvas {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 400px;
+      pointer-events: none;
+      z-index: 0;
       user-select: none;
     }
 
     @media (max-width: 600px) {
-      main {
-        padding: 30px 20px;
+      #container {
+        width: 95vw;
+        padding: 30px 20px 120px;
       }
-      header h1 {
+      h1 {
         font-size: 2.2rem;
       }
-      section h2 {
-        font-size: 1.5rem;
+      p {
+        font-size: 1rem;
       }
-      .contacts {
-        flex-direction: column;
-        gap: 10px;
+      #tesseractCanvas {
+        width: 300px;
+        height: 300px;
       }
     }
   </style>
 </head>
 <body>
 
-  <canvas id="bgCanvas"></canvas>
+  <div id="container">
+    <h1>Alexander De Costa</h1>
+    <p>Building end-to-end ML systems combining theory and application to deliver robust solutions.</p>
+    <p>Consulting on fraud and anomaly detection, with broad experience across ML domains.</p>
+    <div class="contacts">
+      <a href="mailto:alexander.decosta@outlook.com">alexander.decosta@outlook.com</a>
+      <a href="tel:4162004181">416 200 4181</a>
+      <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+    </div>
 
-  <main>
-    <header>
-      <h1>Alexander De Costa</h1>
-      <p>ML Engineer</p>
-      <p class="contacts">
-        <a href="mailto:alexander.decosta@outlook.com">alexander.decosta@outlook.com</a>
-        <a href="tel:4162004181">416 200 4181</a>
-        <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-      </p>
-    </header>
+    <footer>&copy; 2025 Alexander De Costa</footer>
+  </div>
 
-    <section>
-      <h2>About Me</h2>
-      <p>Building end-to-end ML systems combining theory and application to deliver robust solutions. Consulting on fraud and anomaly detection, with broad experience across ML domains.</p>
-    </section>
-
-    <footer>
-      &copy; 2025 Alexander De Costa
-    </footer>
-  </main>
+  <canvas id="tesseractCanvas"></canvas>
 
   <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
   <script>
     (() => {
-      const canvas = document.getElementById('bgCanvas');
+      const canvas = document.getElementById('tesseractCanvas');
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0x121212, 1);
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      renderer.setClearColor(0x000000, 0); // transparent background
 
       const scene = new THREE.Scene();
 
-      // Camera setup
-      const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.z = 5;
+      const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+      camera.position.z = 6;
 
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0x6666aa, 0.6);
-      scene.add(ambientLight);
+      // Wireframe material for tesseract edges
+      const material = new THREE.LineBasicMaterial({ color: 0x2980b9, linewidth: 2 });
 
-      const pointLight = new THREE.PointLight(0x5599ff, 1.2);
-      pointLight.position.set(5, 5, 5);
-      scene.add(pointLight);
+      // Tesseract (4D hypercube) vertices in 4D
+      const vertices4D = [];
+      for(let x = -1; x <= 1; x += 2) {
+        for(let y = -1; y <= 1; y += 2) {
+          for(let z = -1; z <= 1; z += 2) {
+            for(let w = -1; w <= 1; w += 2) {
+              vertices4D.push(new THREE.Vector4(x, y, z, w));
+            }
+          }
+        }
+      }
 
-      // Geometries
-      const torusGeometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
-      const torusMaterial = new THREE.MeshStandardMaterial({
-        color: 0x3b82f6,
-        metalness: 0.7,
-        roughness: 0.2,
-        emissive: 0x0c3db8,
-        emissiveIntensity: 0.5
-      });
-      const torus = new THREE.Mesh(torusGeometry, torusMaterial);
-      scene.add(torus);
+      // Edges between vertices differ by one coordinate only
+      const edges = [];
+      for(let i = 0; i < vertices4D.length; i++) {
+        for(let j = i + 1; j < vertices4D.length; j++) {
+          let diff = 0;
+          if(vertices4D[i].x !== vertices4D[j].x) diff++;
+          if(vertices4D[i].y !== vertices4D[j].y) diff++;
+          if(vertices4D[i].z !== vertices4D[j].z) diff++;
+          if(vertices4D[i].w !== vertices4D[j].w) diff++;
+          if(diff === 1) edges.push([i, j]);
+        }
+      }
 
-      const sphereGeometry = new THREE.SphereGeometry(0.6, 32, 32);
-      const sphereMaterial = new THREE.MeshStandardMaterial({
-        color: 0x2563eb,
-        metalness: 0.9,
-        roughness: 0.1,
-        emissive: 0x1d3cc8,
-        emissiveIntensity: 0.4
-      });
-      const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-      sphere.position.set(2, 1, -1);
-      scene.add(sphere);
+      // Function to project 4D point to 3D with rotation
+      function project4Dto3D(v, angle) {
+        // Rotate in zw-plane
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+        let w = v.w * cos - v.z * sin;
+        let z = v.w * sin + v.z * cos;
+        // Perspective projection parameters for 4D -> 3D
+        const distance = 2;
+        const wPerspective = distance / (distance - w);
+        return new THREE.Vector3(v.x * wPerspective, v.y * wPerspective, z * wPerspective);
+      }
 
-      // Animation loop
+      const geometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(edges.length * 2 * 3); // 2 points per edge, 3 coords each
+
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+      const lineSegments = new THREE.LineSegments(geometry, material);
+      scene.add(lineSegments);
+
+      let angle = 0;
+
       function animate() {
         requestAnimationFrame(animate);
 
-        torus.rotation.x += 0.005;
-        torus.rotation.y += 0.007;
+        angle += 0.01;
 
-        sphere.rotation.y -= 0.004;
-        sphere.rotation.x += 0.003;
+        // Update vertex positions after rotation and projection
+        let posIdx = 0;
+        for(let e = 0; e < edges.length; e++) {
+          const v1 = project4Dto3D(vertices4D[edges[e][0]], angle);
+          const v2 = project4Dto3D(vertices4D[edges[e][1]], angle);
+
+          positions[posIdx++] = v1.x;
+          positions[posIdx++] = v1.y;
+          positions[posIdx++] = v1.z;
+
+          positions[posIdx++] = v2.x;
+          positions[posIdx++] = v2.y;
+          positions[posIdx++] = v2.z;
+        }
+        geometry.attributes.position.needsUpdate = true;
+
+        // Rotate entire mesh slowly around y axis in 3D for better effect
+        lineSegments.rotation.y += 0.003;
+        lineSegments.rotation.x += 0.002;
 
         renderer.render(scene, camera);
       }
       animate();
 
-      // Handle resizing
-      window.addEventListener('resize', () => {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
+      // Resize handler
+      function onResize() {
+        const w = canvas.clientWidth;
+        const h = canvas.clientHeight;
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
         camera.updateProjectionMatrix();
-      });
+      }
+      window.addEventListener('resize', onResize);
+      onResize();
+
     })();
   </script>
 
