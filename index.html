@@ -25,11 +25,12 @@
       max-width: 90vw;
       background: rgba(255 255 255 / 0.85);
       border-radius: 14px;
-      padding: 40px 50px 150px; /* extra bottom padding for canvas */
+      padding: 40px 50px 460px; /* enough bottom padding for canvas */
       box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
       text-align: center;
       overflow: visible;
       z-index: 1;
+      user-select: none;
     }
 
     h1 {
@@ -72,7 +73,7 @@
       user-select: none;
     }
 
-    /* Canvas styling */
+    /* Canvas inside container */
     #tesseractCanvas {
       position: absolute;
       bottom: 20px;
@@ -88,7 +89,7 @@
     @media (max-width: 600px) {
       #container {
         width: 95vw;
-        padding: 30px 20px 120px;
+        padding: 30px 20px 380px; /* scale down padding */
       }
       h1 {
         font-size: 2.2rem;
@@ -116,9 +117,9 @@
     </div>
 
     <footer>&copy; 2025 Alexander De Costa</footer>
-  </div>
 
-  <canvas id="tesseractCanvas"></canvas>
+    <canvas id="tesseractCanvas"></canvas>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
   <script>
@@ -133,10 +134,8 @@
       const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
       camera.position.z = 6;
 
-      // Wireframe material for tesseract edges
       const material = new THREE.LineBasicMaterial({ color: 0x2980b9, linewidth: 2 });
 
-      // Tesseract (4D hypercube) vertices in 4D
       const vertices4D = [];
       for(let x = -1; x <= 1; x += 2) {
         for(let y = -1; y <= 1; y += 2) {
@@ -148,7 +147,6 @@
         }
       }
 
-      // Edges between vertices differ by one coordinate only
       const edges = [];
       for(let i = 0; i < vertices4D.length; i++) {
         for(let j = i + 1; j < vertices4D.length; j++) {
@@ -161,21 +159,18 @@
         }
       }
 
-      // Function to project 4D point to 3D with rotation
       function project4Dto3D(v, angle) {
-        // Rotate in zw-plane
         const cos = Math.cos(angle);
         const sin = Math.sin(angle);
         let w = v.w * cos - v.z * sin;
         let z = v.w * sin + v.z * cos;
-        // Perspective projection parameters for 4D -> 3D
         const distance = 2;
         const wPerspective = distance / (distance - w);
         return new THREE.Vector3(v.x * wPerspective, v.y * wPerspective, z * wPerspective);
       }
 
       const geometry = new THREE.BufferGeometry();
-      const positions = new Float32Array(edges.length * 2 * 3); // 2 points per edge, 3 coords each
+      const positions = new Float32Array(edges.length * 2 * 3);
 
       geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
@@ -189,7 +184,6 @@
 
         angle += 0.01;
 
-        // Update vertex positions after rotation and projection
         let posIdx = 0;
         for(let e = 0; e < edges.length; e++) {
           const v1 = project4Dto3D(vertices4D[edges[e][0]], angle);
@@ -205,7 +199,6 @@
         }
         geometry.attributes.position.needsUpdate = true;
 
-        // Rotate entire mesh slowly around y axis in 3D for better effect
         lineSegments.rotation.y += 0.003;
         lineSegments.rotation.x += 0.002;
 
@@ -213,7 +206,6 @@
       }
       animate();
 
-      // Resize handler
       function onResize() {
         const w = canvas.clientWidth;
         const h = canvas.clientHeight;
