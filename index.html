@@ -1,201 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alexander De Costa – ML Engineer</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alexander De Costa</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Open+Sans&display=swap');
 
-    /* Reset & base */
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      background: #121212;
-      color: #E0E0E0;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 40px 20px;
-    }
-    main {
-      max-width: 800px;
-      width: 100%;
-      background: #1E1E1E;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-      padding: 40px 50px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Subtle geometric background pattern */
-    main::before {
-      content: "";
-      position: absolute;
-      top: -50px; left: -50px;
-      width: 200%;
-      height: 200%;
-      background:
-        radial-gradient(circle at 10% 20%, #3B82F6 2px, transparent 3px),
-        radial-gradient(circle at 30% 50%, #2563EB 2px, transparent 3px),
-        radial-gradient(circle at 70% 40%, #1D4ED8 2px, transparent 3px),
-        radial-gradient(circle at 80% 75%, #3B82F6 2px, transparent 3px);
-      background-size: 150px 150px;
-      background-repeat: repeat;
-      opacity: 0.08;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Header */
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-      position: relative;
-      z-index: 1;
-    }
-    header h1 {
-      font-family: 'Roboto Slab', serif;
-      font-weight: 700;
-      font-size: 2.8rem;
-      margin-bottom: 0.2rem;
-      color: #60A5FA;
-      letter-spacing: 1.2px;
-    }
-    header p {
-      font-size: 1.1rem;
-      color: #9CA3AF;
-      margin-top: 0;
-    }
-    .contact-links {
-      margin-top: 0.8rem;
-      font-size: 0.95rem;
-    }
-    .contact-links a {
-      color: #60A5FA;
-      text-decoration: none;
-      margin: 0 12px;
-      transition: color 0.25s ease;
-    }
-    .contact-links a:hover {
-      color: #93C5FD;
-      text-decoration: underline;
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 2.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    section h2 {
-      font-family: 'Roboto Slab', serif;
-      font-weight: 700;
-      color: #3B82F6;
-      font-size: 1.8rem;
-      border-bottom: 3px solid #2563EB;
-      padding-bottom: 6px;
-      margin-bottom: 1rem;
-    }
-    section p {
-      font-size: 1rem;
-      color: #D1D5DB;
-      margin-top: 0;
-      max-width: 700px;
-    }
-    ul {
-      list-style-type: disc;
-      margin-left: 1.3rem;
-      color: #D1D5DB;
-    }
-    ul li {
-      margin-bottom: 0.6rem;
-      font-size: 1rem;
-      max-width: 700px;
-    }
-
-    /* Confidential note style */
-    .confidential-note {
-      font-style: italic;
-      color: #9CA3AF;
-      margin-top: 0.6rem;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      color: #6B7280;
-      font-size: 0.85rem;
-      margin-top: 3rem;
-      user-select: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      main {
-        padding: 30px 20px;
-      }
-      header h1 {
-        font-size: 2.2rem;
-      }
-      section h2 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0a0a0a;
+    font-family: 'Open Sans', sans-serif;
+    color: #eee;
+    overflow: hidden;
+  }
+  main {
+    background: rgba(20, 20, 30, 0.85);
+    max-width: 600px;
+    padding: 40px 40px 50px;
+    border-radius: 14px;
+    box-shadow: 0 0 30px #1e40afaa;
+    z-index: 1;
+    position: relative;
+  }
+  h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #3b82f6;
+    letter-spacing: 1.2px;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.6rem;
+    max-width: 100%;
+  }
+  a {
+    color: #60a5fa;
+    text-decoration: none;
+    margin-right: 1.2rem;
+    font-weight: 600;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  /* Background canvas */
+  canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>Alexander De Costa</h1>
-      <p>ML Engineer</p>
-      <p class="contact-links">
-        <a href="tel:4162004181">416 200 4181</a> |
-        <a href="mailto:alexander.decosta@outlook.com">alexander.decosta@outlook.com</a> |
-        <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
-      </p>
-    </header>
+<canvas id="bg"></canvas>
 
-    <section>
-      <h2>About Me</h2>
-      <p>
-        Recent graduate in Mathematics and Probability from the University of Toronto. Experienced in building modular machine learning systems that combine rigorous mathematical foundations with practical engineering to solve complex, real-world problems.
-      </p>
-    </section>
+<main>
+  <h1>Alexander De Costa</h1>
+  <p>I build end-to-end machine learning systems that combine mathematical theory with practical application to deliver effective solutions.</p>
+  <p>Currently consulting at RiskScope, providing fraud and anomaly detection services. Comfortable applying ML across various domains to create impactful tools.</p>
+  <p>
+    <a href="mailto:alexander.decosta@outlook.com">Email</a>
+    <a href="tel:4162004181">Phone</a>
+    <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+  </p>
+</main>
 
-    <section>
-      <h2>Research Interests</h2>
-      <p>
-        Applications of probability theory to machine learning, quantitative finance, and mathematical physics.
-      </p>
-    </section>
+<script>
+// Simple geometric background with spheres and Sierpinski triangle pattern on Canvas
 
-    <section>
-      <h2>Current Work</h2>
-      <p>
-        Leading development of a modular AutoML framework for sparse, imbalanced fraud detection datasets. Conducting independent research to improve theoretical guarantees for adaptive algorithms such as SGD variants and reinforcement learning.
-      </p>
-      <p class="confidential-note">
-        Projects are confidential and not publicly available at this time, but I welcome inquiries and collaboration opportunities.
-      </p>
-    </section>
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
 
-    <section>
-      <h2>Professional Experience</h2>
-      <ul>
-        <li>Co-founder and Lead ML Consultant at RiskScope, delivering interpretable and robust ML pipelines.</li>
-        <li>Former actuarial student at Manulife supporting risk modeling and data analytics.</li>
-      </ul>
-    </section>
+let W, H;
+function resize() {
+  W = window.innerWidth;
+  H = window.innerHeight;
+  canvas.width = W * devicePixelRatio;
+  canvas.height = H * devicePixelRatio;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+}
+resize();
+window.addEventListener('resize', resize);
 
-    <footer>
-      &copy; 2025 Alexander De Costa
-    </footer>
-  </main>
+function drawSphere(x, y, radius, color) {
+  let grad = ctx.createRadialGradient(x - radius/3, y - radius/3, radius/8, x, y, radius);
+  grad.addColorStop(0, color);
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, 2*Math.PI);
+  ctx.fill();
+}
+
+function drawTriangle(x, y, size, depth) {
+  if (depth === 0) {
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + size, y);
+    ctx.lineTo(x + size/2, y - size * Math.sqrt(3)/2);
+    ctx.closePath();
+    ctx.strokeStyle = '#2563eb88';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  } else {
+    drawTriangle(x, y, size/2, depth - 1);
+    drawTriangle(x + size/2, y, depth - 1);
+    drawTriangle(x + size/4, y - size * Math.sqrt(3)/4, depth - 1);
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw large spheres randomly placed
+  let sphereCount = 7;
+  for (let i=0; i<sphereCount; i++) {
+    let r = 50 + 40 * Math.sin(i * 2);
+    let x = (W/(sphereCount+1))*(i+1);
+    let y = H/2 + 60 * Math.cos(i*1.5);
+    drawSphere(x, y, r, 'rgba(59, 130, 246, 0.25)');
+  }
+
+  // Draw multiple small Sierpinski triangles along bottom
+  let triSize = 100;
+  let triCount = Math.floor(W/triSize) + 1;
+  for(let i=0; i<triCount; i++) {
+    drawTriangle(i*triSize - 30, H - 40, triSize, 3);
+  }
+}
+draw();
+
+// Animate spheres’ subtle vertical movement
+let phase = 0;
+function animate() {
+  phase += 0.01;
+  ctx.clearRect(0, 0, W, H);
+
+  let sphereCount = 7;
+  for (let i=0; i<sphereCount; i++) {
+    let r = 50 + 40 * Math.sin(i * 2);
+    let x = (W/(sphereCount+1))*(i+1);
+    let y = H/2 + 60 * Math.cos(i*1.5 + phase);
+    drawSphere(x, y, r, 'rgba(59, 130, 246, 0.25)');
+  }
+
+  let triSize = 100;
+  let triCount = Math.floor(W/triSize) + 1;
+  for(let i=0; i<triCount; i++) {
+    drawTriangle(i*triSize - 30, H - 40, triSize, 3);
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
 </body>
 </html>
