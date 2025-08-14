@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alexander De Costa – ML Engineer</title>
+  <title>Alexander De Costa – Data Scientist</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans&display=swap');
 
@@ -25,7 +25,7 @@
       max-width: 90vw;
       background: rgba(255 255 255 / 0.85);
       border-radius: 14px;
-      padding: 40px 50px 460px; /* enough bottom padding for canvas */
+      padding: 40px 50px 460px;
       box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
       text-align: center;
       overflow: visible;
@@ -54,11 +54,15 @@
       font-size: 0.95rem;
       margin-top: 0.8rem;
       color: #2980b9;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
     .contacts a {
       color: #2980b9;
       text-decoration: none;
-      margin: 0 15px;
+      white-space: nowrap;
       transition: color 0.25s ease;
     }
     .contacts a:hover {
@@ -73,7 +77,6 @@
       user-select: none;
     }
 
-    /* Canvas inside container */
     #tesseractCanvas {
       position: absolute;
       bottom: 20px;
@@ -89,7 +92,7 @@
     @media (max-width: 600px) {
       #container {
         width: 95vw;
-        padding: 30px 20px 380px; /* scale down padding */
+        padding: 30px 20px 380px;
       }
       h1 {
         font-size: 2.2rem;
@@ -127,10 +130,9 @@
       const canvas = document.getElementById('tesseractCanvas');
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
       renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-      renderer.setClearColor(0x000000, 0); // transparent background
+      renderer.setClearColor(0x000000, 0);
 
       const scene = new THREE.Scene();
-
       const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
       camera.position.z = 6;
 
@@ -171,18 +173,20 @@
 
       const geometry = new THREE.BufferGeometry();
       const positions = new Float32Array(edges.length * 2 * 3);
-
       geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
       const lineSegments = new THREE.LineSegments(geometry, material);
       scene.add(lineSegments);
 
-      let angle = 0;
+      let time = 0;
 
       function animate() {
         requestAnimationFrame(animate);
 
-        angle += 0.01;
+        time += 0.005; // slow time progression
+
+        // Smooth easing rotation
+        const angle = Math.sin(time) * 0.5;
 
         let posIdx = 0;
         for(let e = 0; e < edges.length; e++) {
@@ -199,8 +203,9 @@
         }
         geometry.attributes.position.needsUpdate = true;
 
-        lineSegments.rotation.y += 0.003;
-        lineSegments.rotation.x += 0.002;
+        // Gentle oscillating rotation for calm floating
+        lineSegments.rotation.y = Math.sin(time * 0.6) * 0.2;
+        lineSegments.rotation.x = Math.cos(time * 0.4) * 0.15;
 
         renderer.render(scene, camera);
       }
